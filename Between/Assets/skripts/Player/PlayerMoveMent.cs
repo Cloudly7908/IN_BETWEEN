@@ -6,7 +6,6 @@ public class PlayerMoveMent : MonoBehaviour
 {
 
 
-    public Transform playerCam;
     public Transform orientation;
     public Transform respawn;
 
@@ -61,7 +60,6 @@ public class PlayerMoveMent : MonoBehaviour
     private void Update()
     {
         MyInput();
-        Look();
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -149,24 +147,7 @@ public class PlayerMoveMent : MonoBehaviour
     }
 
     private float desiredX;
-    private void Look()
-    {
-        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
-
-
-        Vector3 rot = playerCam.transform.localRotation.eulerAngles;
-        desiredX = rot.y + mouseX;
-
-
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-
-        playerCam.transform.localRotation = Quaternion.Euler(xRotation, desiredX, 0);
-        orientation.transform.localRotation = Quaternion.Euler(0, desiredX, 0);
-    }
-
+   
     private void CounterMovement(float x, float y, Vector2 mag)
     {
         if (!grounded || jumping) return;
