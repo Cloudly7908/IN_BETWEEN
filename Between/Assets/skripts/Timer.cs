@@ -2,25 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Timer : MonoBehaviour
 {
-    public Text timerText;
-    private float startTime;
+    float timer;
+    float Millisecond;
+    float seconds;
+    float minutes;
+    float timeLeft = 15f;
 
-    void Start()
+
+    [SerializeField] Text timerText;
+
+    private void Start()
     {
-        startTime = Time.time;
+        timer = 0;
     }
 
-
-    void Update()
+    private void Update()
     {
-        float t = Time.time - startTime;
+        timer += Time.deltaTime;
+        Millisecond = Mathf.FloorToInt(timeLeft += Time.deltaTime * 1000);
+        seconds = (int)(timer % 60);
+        minutes = (int)((timer / 60) % 60);
+   
 
-        string minutes = ((int)t / 60).ToString("f2");
-        string seconds = (1 % 60).ToString("f2");
-
-        timerText.text = minutes + ":" + seconds;
+      
+        timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + Millisecond.ToString("");
     }
 }
