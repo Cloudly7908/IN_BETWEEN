@@ -31,6 +31,10 @@ public class PlayerMoveMent : MonoBehaviour
     private float jumpCooldown = 0.25f;
     public float jumpForce = 550f;
 
+    public float delay;
+    public ParticleSystem dust;
+    private bool canDust = true;
+
 
     float x, y;
     bool jumping, sprinting, crouching;
@@ -125,6 +129,7 @@ public class PlayerMoveMent : MonoBehaviour
         if (grounded && readyToJump)
         {
             readyToJump = false;
+            
 
 
             rb.AddForce(Vector2.up * jumpForce * 1.5f);
@@ -217,6 +222,18 @@ public class PlayerMoveMent : MonoBehaviour
             }
         }
 
+          if (grounded)
+          {
+                print("Is Grounded"); 
+
+                if (canDust)
+                {
+                    print("Can Dust");
+                    StartCoroutine(LandDust());
+                    canDust = false;
+                }
+          }
+         
 
         float delay = 3f;
         if (!cancellingGrounded)
@@ -229,8 +246,21 @@ public class PlayerMoveMent : MonoBehaviour
     private void StopGrounded()
     {
         grounded = false;
+        canDust = true;
+
+
     }
 
+
+    private IEnumerator LandDust()
+    {
+        dust.Play();
+        yield return new WaitForSeconds(delay);
+        dust.Stop();
+    }
+
+
+    
     
 }
     

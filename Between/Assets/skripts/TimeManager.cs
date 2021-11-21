@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public float Speed = 0.10f;
+    public float Speed = 0.3f;
     public GameObject watch;
     void FixedUpdate()
     {
