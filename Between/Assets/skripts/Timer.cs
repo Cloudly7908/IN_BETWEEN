@@ -13,11 +13,7 @@ public class Timer : MonoBehaviour
     float timeLeft = 15f;
     float Millisecond1;
 
-    //int timeTime;
-   
-    
-
-    [SerializeField] public Text timerText;
+    public Text timerText;
 
     private void Start()
     {
@@ -27,18 +23,8 @@ public class Timer : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        //Millisecond = Mathf.FloorToInt(timeLeft += Time.deltaTime * 100);
-        
-
-
-        
-       
         seconds = (float)(timer % 60);
-        
         minutes = (int)((timer / 60) % 60);
-
-        timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00.00").Replace(".", ":"); ;
+        timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00.00").Replace(".", ":");
     }
-    
-
 }

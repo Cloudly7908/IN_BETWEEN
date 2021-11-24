@@ -8,7 +8,6 @@ public class JumpPad : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("UpFocre Appled");
         GameObject block = collision.gameObject;
         Rigidbody rb = block.GetComponent<Rigidbody>();
         rb.AddForce(Vector3.up * UpForce);

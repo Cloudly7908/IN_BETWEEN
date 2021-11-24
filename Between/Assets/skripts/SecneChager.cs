@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SecneChager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Play()
     {
-        
+        SceneManager.LoadScene(0);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpeedRun()
     {
-        
+        SceneManager.LoadScene(0);
+    }
+
+    public void tutorit()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene(0);
     }
 }
